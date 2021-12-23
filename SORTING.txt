@@ -1,0 +1,146 @@
+#INSERTION SORT
+
+def insertion(a,n):
+   for i in range(1, n):
+      temp = a[i]
+      j = i-1
+      while j >=0 and temp < a[j] :
+         a[j+1] = a[j]
+         j -= 1
+      a[j+1] = temp
+
+a = []
+n = int(input("number of elements to be entered: "))
+for i in range(n):
+  a.append(int(input()))
+
+
+print ("The sorted array is: ")
+insertion(a,n)
+print(a)
+
+#SHELL SORT
+
+def shell_sort(inp, n):
+ 
+    h = n // 2
+    while h > 0:
+        for i in range(h, n):
+            t = inp[i]
+            j = i
+            while j >= h and inp[j - h] > t:
+                inp[j] = inp[j - h]
+                j -= h
+ 
+            inp[j] = t
+        h = h // 2
+ 
+ 
+inp = [10, 50, 20, 70, 30, 60, 90, 80]
+n = len(inp)
+print('Array before Sorting:')
+print(inp)
+shell_sort(inp, n)
+print('Array after Sorting:')
+print(inp)
+
+#QUICK SORT
+
+def _pivote(list1,first,last):
+    pivote=list1[first]
+    left=first+1
+    right=last
+    while True:
+        while left<=right and list1[left]<=pivote:
+            left+=1
+        while left<=right and list1[right]>=pivote:
+            right-=1
+        if left>right:
+            break
+        else:
+            list1[right],list1[left]=list1[left],list1[right]
+    list1[first], list1[right] = list1[right], list1[first]
+    return right
+
+
+'''
+print(_pivote(list1,0,n-1))'''
+
+def qwicksort(list1,first,last):
+    if first<last:
+        p=_pivote(list1,first,last)
+        qwicksort(list1,first,p-1)
+        qwicksort(list1,p+1,last)
+list1=[40,20,10,50,30]
+n=len(list1)
+qwicksort(list1,0,n-1)
+print(list1)
+
+#BUBBLE SORT
+
+def bubble_sort(a):
+  swap = 0
+  for i in range(len(a)):
+    for j in range(0,len(a)-i-1):
+      if a[j]>a[j+1]:
+        temp = a[j]
+        a[j]=a[j+1]
+        a[j+1]=temp
+        swap = 1
+    if not swap:
+        break
+  
+n = int(input("enter number limit: "))
+a = []
+print("enter percentage of students: ")
+for i in range(n):
+  a.append(int(input()))
+
+bubble_sort(a)
+print(a)
+print("top 5: ")
+print(a[:5])
+
+#MERGE SORT
+
+def merge_sort(a):
+  if len(a)>1:
+    m = len(a)//2
+    l = a[:m]
+    r = a[m:]
+
+    merge_sort(l)
+    merge_sort(r)
+
+    i = 0
+    j = 0
+    k = 0
+
+    while (i<len(l) and j<len(r)):
+      if l[i] < r[j]:
+        a[k] = l[i]
+        i+=1
+      else:
+        a[k] = r[j]
+        j += 1 
+      k += 1
+
+    while (i<len(l)):
+      a[k] = l[i]
+      i+=1
+      k+=1
+
+    while (j<len(r)):
+      a[k] = r[j]
+      j+=1
+      k+=1
+
+n = int(input("enter number limit: "))
+a = []
+print("enter percentage of students: ")
+for i in range(n):
+  a.append(int(input()))
+
+merge_sort(a)
+print(a)
+© 2021 GitHub, Inc.

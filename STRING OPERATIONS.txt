@@ -1,0 +1,58 @@
+#WORD WITH LONGEST LENGTH
+def longestWordLength(string):  
+    length = 0   
+    w = ''       
+       for word in string.split(): 
+        if(len(word) > length): 
+            length = len(word) 
+            w = word
+    return (length, w)  
+  
+string = input("Enter the string: ")
+l, w = longestWordLength(string)
+print("Longest word is ", w, " and its length is ", l)
+
+#FREQUENCY
+string=input("Enter the string: ")
+char=input("Please enter the char to find frequency of ta character\n")
+
+count=0
+for i in range(len(string)):
+    if(string[i]==char):
+        count=count+1
+print("The frequency of the ",char,"in the string is: ",count)
+
+#PALINDROME
+def reverse(str1):
+    if(len(str1) == 0):
+        return str1
+    else:
+        return reverse(str1[1 : ]) + str1[0]
+    
+string = input("Please enter your own String : ")
+str1 = reverse(string)
+print("String in reverse Order :  ", str1)
+
+if(string == str1):
+   print("This is a Palindrome String")
+else:
+   print("This is Not a Palindrome String")
+   
+#SUBSTRING
+string = 'Hello world in python programming.'
+substring = 'prog'
+
+index = string.find(substring)
+print(index)
+
+#OCCURRENCES
+string=raw_input("Enter string:")
+word=raw_input("Enter word:")
+a=[]
+count=0
+a=string.split(" ")
+for i in range(0,len(a)):
+      if(word==a[i]):
+            count=count+1
+print("Count of the word is:")
+print(count)
